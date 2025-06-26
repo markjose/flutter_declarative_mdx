@@ -5,8 +5,8 @@ import 'package:flutter_declarative_mdx/declarative_mdx_workflow.dart';
 import 'package:flutter_declarative_mdx/model/workflow_page.dart';
 import 'package:flutter_declarative_mdx/model/workflow_step.dart';
 
-class SimpleExample extends StatelessWidget {
-  const SimpleExample({super.key});
+class SimpleWorkflowExample extends StatelessWidget {
+  const SimpleWorkflowExample({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -27,7 +27,9 @@ Use the next button to see the next page.
 
 | Col 1  | Col 2  |
 | ------ | ------ |
-| Item 1 | Item 2 |
+| Row 1, Item 1 | Row 1, Item 2 |
+| Row 2, Item 1 | Row 2, Item 2 |
+| Row 3, Item 1 | Row 3, Item 2 |
 ''',
                 ),
                 WorkflowPage(
