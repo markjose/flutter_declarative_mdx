@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_declarative_mdx/declarative_mdx.dart';
 import 'package:flutter_declarative_mdx/declarative_mdx_configuration.dart';
-import 'package:flutter_declarative_mdx/declarative_mdx_workflow.dart';
+import 'package:flutter_declarative_mdx/model/workflow.dart';
 import 'package:flutter_declarative_mdx/model/workflow_page.dart';
 import 'package:flutter_declarative_mdx/model/workflow_step.dart';
 
@@ -12,13 +12,13 @@ class SimpleWorkflowExample extends StatelessWidget {
   Widget build(BuildContext context) {
     return DeclarativeMdx(
       DeclarativeMdxConfiguration(
-        workflow: DeclarativeMdxWorkflow(
+        workflow: Workflow(
           steps: [
             WorkflowStep(
               pages: [
                 WorkflowPage(
                   content: '''
-# This is a simple example
+# This is a simple workflow example
 
 ## Step 1 : Page 1
 

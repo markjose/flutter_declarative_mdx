@@ -1,0 +1,26 @@
+import 'package:flutter/material.dart';
+import 'package:flutter_declarative_mdx/layout/extensible_markdown/tag_handler.dart';
+
+final _submitModelTag = 'submit_model';
+
+class SubmitModelType {
+  static final text = "text";
+}
+
+class SubmitModelTagHandler extends TagHandler {
+  @override
+  InlineSpan build(Map<String, String> attributes, dynamic model) {
+    final String label = attributes["label"] ?? "Submit model";
+
+    onSubmitModelPressed() {
+      print("Submit Model.");
+    }
+
+    return WidgetSpan(
+      child: TextButton(onPressed: onSubmitModelPressed, child: Text(label)),
+    );
+  }
+
+  @override
+  String get tag => _submitModelTag;
+}
