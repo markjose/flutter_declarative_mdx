@@ -1,7 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_declarative_mdx/declarative_mdx.dart';
-import 'package:flutter_declarative_mdx/declarative_mdx_configuration.dart';
-import 'package:flutter_declarative_mdx/model/workflow.dart';
 import 'package:flutter_declarative_mdx/model/workflow_page.dart';
 import 'package:flutter_declarative_mdx/model/workflow_step.dart';
 
@@ -10,14 +8,11 @@ class SimpleWorkflowExample extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return DeclarativeMdx(
-      DeclarativeMdxConfiguration(
-        workflow: Workflow(
-          steps: [
-            WorkflowStep(
-              pages: [
-                WorkflowPage(
-                  content: '''
+    return DeclarativeMdx.renderSteps([
+      WorkflowStep(
+        pages: [
+          WorkflowPage(
+            content: '''
 # This is a simple workflow example
 
 ## Step 1 : Page 1
@@ -31,9 +26,9 @@ Use the next button to see the next page.
 | Row 2, Item 1 | Row 2, Item 2 |
 | Row 3, Item 1 | Row 3, Item 2 |
 ''',
-                ),
-                WorkflowPage(
-                  content: '''
+          ),
+          WorkflowPage(
+            content: '''
 # This is a simple example
 
 ## Step 1 : Page 2
@@ -43,13 +38,13 @@ Use the next button to see the first page of the next step.
 
 *N.B. You can also now see the previous button to go back to the first page of Step 1.*
 ''',
-                ),
-              ],
-            ),
-            WorkflowStep(
-              pages: [
-                WorkflowPage(
-                  content: '''
+          ),
+        ],
+      ),
+      WorkflowStep(
+        pages: [
+          WorkflowPage(
+            content: '''
 # This is a simple example
 
 ## Step 2 : Page 1
@@ -57,12 +52,9 @@ Use the next button to see the first page of the next step.
 This is the first page of step 2, see that the step indicator above has changed. 
 This is the last page in the flow so there is no next button, also because there is no model associated with this example the button says 'Done' and not 'Submit'.
 ''',
-                ),
-              ],
-            ),
-          ],
-        ),
+          ),
+        ],
       ),
-    );
+    ]);
   }
 }

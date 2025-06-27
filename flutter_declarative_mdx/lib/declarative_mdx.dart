@@ -2,6 +2,9 @@ import 'package:flutter/material.dart';
 import 'package:flutter_declarative_mdx/declarative_mdx_configuration.dart';
 import 'package:flutter_declarative_mdx/hooks/use_configure_workflow.dart';
 import 'package:flutter_declarative_mdx/layout/layout_workflow.dart';
+import 'package:flutter_declarative_mdx/model/workflow.dart';
+import 'package:flutter_declarative_mdx/model/workflow_page.dart';
+import 'package:flutter_declarative_mdx/model/workflow_step.dart';
 import 'package:flutter_declarative_mdx/providers/workflow_provider.dart';
 import 'package:flutter_hooks/flutter_hooks.dart';
 import 'package:provider/provider.dart';
@@ -16,6 +19,12 @@ class DeclarativeMdx extends HookWidget {
     super.key,
     this.isHorizontal = false,
   });
+
+  DeclarativeMdx.render(String content)
+    : this(DeclarativeMdxConfiguration(page: WorkflowPage(content: content)));
+
+  DeclarativeMdx.renderSteps(List<WorkflowStep> steps)
+    : this(DeclarativeMdxConfiguration(workflow: Workflow(steps: steps)));
 
   @override
   Widget build(BuildContext context) {
