@@ -15,7 +15,7 @@ class CustomNode extends ElementNode {
 
   Map<String, String> attributesFromText(String tag, String parseTarget) {
     final RegExp attrRegExp = RegExp(
-      '([a-zA-Z_:][-a-zA-Z0-9_:.]*)\s*=\s*("([^"]*)"|\'([^\']*)\')',
+      '([a-zA-Z_:][-a-zA-Z0-9_:.]*)\\s*=\\s*("([^"]*)"|\'([^\']*)\')',
       caseSensitive: false,
     );
 

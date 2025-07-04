@@ -20,11 +20,14 @@ class DeclarativeMdx extends HookWidget {
     this.isHorizontal = false,
   });
 
-  DeclarativeMdx.render(String content)
-    : this(DeclarativeMdxConfiguration(page: WorkflowPage(content: content)));
+  factory DeclarativeMdx.render(String content) => DeclarativeMdx(
+    DeclarativeMdxConfiguration(page: WorkflowPage(content: content)),
+  );
 
-  DeclarativeMdx.renderSteps(List<WorkflowStep> steps)
-    : this(DeclarativeMdxConfiguration(workflow: Workflow(steps: steps)));
+  factory DeclarativeMdx.renderSteps(List<WorkflowStep> steps) =>
+      DeclarativeMdx(
+        DeclarativeMdxConfiguration(workflow: Workflow(steps: steps)),
+      );
 
   @override
   Widget build(BuildContext context) {
