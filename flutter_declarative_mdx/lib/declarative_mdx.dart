@@ -1,13 +1,16 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_declarative_mdx/declarative_mdx_configuration.dart';
 import 'package:flutter_declarative_mdx/hooks/use_configure_workflow.dart';
+import 'package:flutter_declarative_mdx/hooks/use_model_state_provider.dart';
 import 'package:flutter_declarative_mdx/layout/layout_workflow.dart';
 import 'package:flutter_declarative_mdx/model/workflow.dart';
 import 'package:flutter_declarative_mdx/model/workflow_page.dart';
 import 'package:flutter_declarative_mdx/model/workflow_step.dart';
+import 'package:flutter_declarative_mdx/providers/model_state_provider.dart';
 import 'package:flutter_declarative_mdx/providers/workflow_provider.dart';
 import 'package:flutter_hooks/flutter_hooks.dart';
 import 'package:provider/provider.dart';
+import 'package:provider/single_child_widget.dart';
 
 class DeclarativeMdx extends HookWidget {
   final DeclarativeMdxConfiguration configuration;
@@ -20,26 +23,47 @@ class DeclarativeMdx extends HookWidget {
     this.isHorizontal = false,
   });
 
-  factory DeclarativeMdx.render(String content) => DeclarativeMdx(
+  factory DeclarativeMdx.fromPageContent(String content) => DeclarativeMdx(
     DeclarativeMdxConfiguration(page: WorkflowPage(content: content)),
   );
 
-  factory DeclarativeMdx.renderSteps(List<WorkflowStep> steps) =>
+  factory DeclarativeMdx.fromPageAsset(String assetName) => DeclarativeMdx(
+    DeclarativeMdxConfiguration(
+      page: WorkflowPage(
+        markdownLoader:
+            (context) => DefaultAssetBundle.of(
+              context,
+            ).loadString('assets/data/text.md'),
+      ),
+    ),
+  );
+
+  factory DeclarativeMdx.fromStepList(List<WorkflowStep> steps) =>
       DeclarativeMdx(
         DeclarativeMdxConfiguration(workflow: Workflow(steps: steps)),
       );
+
+  static dynamic useModel(dynamic map) {
+    final provider = useModelStateProvider();
+    return provider == null ? {} : provider.model;
+  }
 
   @override
   Widget build(BuildContext context) {
     final workflow = useConfigureWorkflow(configuration);
 
-    return workflow != null
-        ? MultiProvider(
-          providers: [
-            ChangeNotifierProvider(create: (_) => WorkflowProvider(workflow)),
-          ],
-          child: LayoutWorkflow(isHorizontal: isHorizontal),
-        )
-        : LayoutWorkflow(isHorizontal: isHorizontal);
+    final providers = <SingleChildWidget>[];
+
+    if (workflow != null) {
+      providers.add(
+        ChangeNotifierProvider(create: (_) => WorkflowProvider(workflow)),
+      );
+    }
+    providers.add(ChangeNotifierProvider(create: (_) => ModelStateProvider()));
+
+    return MultiProvider(
+      providers: providers,
+      builder: (context, child) => LayoutWorkflow(isHorizontal: isHorizontal),
+    );
   }
 }

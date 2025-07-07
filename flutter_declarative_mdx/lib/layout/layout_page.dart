@@ -8,8 +8,21 @@ class LayoutPage extends HookWidget {
 
   @override
   Widget build(BuildContext context) {
+    final content = useState("");
     final page = useCurrentPage();
 
-    return Expanded(child: LayoutContent(page.content));
+    useEffect(() {
+      if (page.content != null) {
+        content.value = page.content!;
+      } else if (page.markdownLoader != null) {
+        page.markdownLoader!(context).then(
+          (markdown) => content.value = markdown,
+        );
+      }
+
+      return () {};
+    }, []);
+
+    return Expanded(child: LayoutContent(content.value));
   }
 }

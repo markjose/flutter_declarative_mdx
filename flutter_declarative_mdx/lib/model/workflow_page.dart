@@ -1,5 +1,8 @@
-class WorkflowPage {
-  final String content;
+import 'package:flutter/material.dart';
 
-  WorkflowPage({required this.content});
+class WorkflowPage {
+  final String? content;
+  final Future<String> Function(BuildContext context)? markdownLoader;
+
+  WorkflowPage({this.content, this.markdownLoader});
 }

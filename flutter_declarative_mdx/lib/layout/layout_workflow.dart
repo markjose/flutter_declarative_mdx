@@ -13,7 +13,6 @@ class LayoutWorkflow extends HookWidget {
   @override
   Widget build(BuildContext context) {
     final workflowProvider = useWorkflowProvider();
-    useListenable(workflowProvider);
 
     final children = <Widget>[];
 
@@ -27,6 +26,10 @@ class LayoutWorkflow extends HookWidget {
 
     return isHorizontal
         ? Row(children: children)
-        : Column(mainAxisSize: MainAxisSize.max, children: children);
+        : Column(
+          crossAxisAlignment: CrossAxisAlignment.stretch,
+          mainAxisSize: MainAxisSize.max,
+          children: children,
+        );
   }
 }

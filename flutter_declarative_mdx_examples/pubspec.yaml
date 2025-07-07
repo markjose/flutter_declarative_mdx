@@ -11,6 +11,8 @@ dependencies:
     sdk: flutter
   flutter_declarative_mdx:
     path: ../flutter_declarative_mdx
+  flutter_hooks: ^0.21.2
+  go_router: ^16.0.0
 
 dev_dependencies:
   flutter_test:

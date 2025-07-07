@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_declarative_mdx/hooks/use_model_state_provider.dart';
 import 'package:flutter_declarative_mdx/layout/extensible_markdown/default_tag_handlers/select_tag_handler.dart';
 import 'package:flutter_declarative_mdx/layout/extensible_markdown/tag_handler.dart';
 import 'package:flutter_declarative_mdx/layout/extensible_markdown/default_tag_handlers/input_tag_handler.dart';
@@ -15,6 +16,8 @@ class LayoutContent extends HookWidget {
 
   @override
   Widget build(BuildContext context) {
+    final modelProvider = useModelStateProvider();
+
     final baseTextStyle = GoogleFonts.roboto().copyWith(fontSize: 14.0);
     final fixedTextStyle = GoogleFonts.robotoMono().copyWith(fontSize: 14.0);
     final headingTextStyle = baseTextStyle.copyWith(
@@ -46,8 +49,12 @@ class LayoutContent extends HookWidget {
       mainAxisSize: MainAxisSize.min,
       children: md.MarkdownGenerator(
         textGenerator:
-            (node, config, visitor) =>
-                CustomNode(tagHandlers, node.textContent, config, visitor),
+            (node, config, visitor) => CustomNode(
+              tagHandlers: tagHandlers,
+              text: node.textContent,
+              config: config,
+              modelProvider: modelProvider,
+            ),
       ).buildWidgets(content, config: markdownConfiguration),
     );
   }

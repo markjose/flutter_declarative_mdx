@@ -1,17 +1,23 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_declarative_mdx/layout/extensible_markdown/tag_handler.dart';
+import 'package:flutter_declarative_mdx/providers/model_state_provider.dart';
 import 'package:markdown_widget/markdown_widget.dart';
 
 class CustomNode extends ElementNode {
-  final List<TagHandler> tagHandlers;
+  final List<TagHandler>? tagHandlers;
   final String text;
   final MarkdownConfig config;
-  final WidgetVisitor visitor;
+  final ModelStateProvider? modelProvider;
 
   String? customTag;
   Map<String, String>? customAttributes;
 
-  CustomNode(this.tagHandlers, this.text, this.config, this.visitor);
+  CustomNode({
+    this.modelProvider,
+    this.tagHandlers,
+    required this.text,
+    required this.config,
+  });
 
   Map<String, String> attributesFromText(String tag, String parseTarget) {
     final RegExp attrRegExp = RegExp(
@@ -40,9 +46,9 @@ class CustomNode extends ElementNode {
       return super.build();
     }
 
-    return tagHandlers
+    return (tagHandlers ?? [])
         .firstWhere((handler) => handler.tag == customTag)
-        .build(customAttributes!, {});
+        .build(customAttributes!, modelProvider);
   }
 
   @override
@@ -50,7 +56,7 @@ class CustomNode extends ElementNode {
     final textStyle = config.p.textStyle.merge(parentStyle);
 
     // Handle special tags
-    for (var handler in tagHandlers) {
+    for (var handler in (tagHandlers ?? [])) {
       if (text.contains(RegExp('<${handler.tag}[^>]*>'))) {
         customTag = handler.tag;
         customAttributes = attributesFromText(handler.tag, text);

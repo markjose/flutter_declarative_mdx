@@ -5,6 +5,5 @@ import 'package:provider/provider.dart';
 WorkflowProvider useWorkflowProvider() {
   final context = useContext();
   final workflowProvider = context.read<WorkflowProvider>();
-
-  return workflowProvider;
+  return useListenable(workflowProvider);
 }
