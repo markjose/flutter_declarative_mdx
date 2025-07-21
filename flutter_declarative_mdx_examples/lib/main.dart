@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_declarative_mdx/providers/model_state_provider.dart';
 import 'package:flutter_declarative_mdx_examples/examples.dart';
 import 'package:go_router/go_router.dart';
+import 'package:provider/provider.dart';
 
 void main() {
   runApp(const MainApp());
@@ -31,6 +33,9 @@ class MainApp extends StatelessWidget {
       routes[example.path] = example.builder;
     }
 
-    return MaterialApp.router(title: appTitle, routerConfig: _router);
+    return Provider<ModelStateProvider>(
+      create: (_) => ModelStateProvider(),
+      child: MaterialApp.router(title: appTitle, routerConfig: _router),
+    );
   }
 }

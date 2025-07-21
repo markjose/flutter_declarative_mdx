@@ -7,9 +7,8 @@ class ModelStateProvider with ChangeNotifier {
 
   dynamic get model => _rawModel;
 
-  void updateModel(String? propertyName, String value) {
+  void updateModel(String? propertyName, dynamic value) {
     _rawModel[propertyName] = value;
-    print(_rawModel);
     notifyListeners();
   }
 }

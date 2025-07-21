@@ -21,7 +21,7 @@ class LayoutPage extends HookWidget {
       }
 
       return () {};
-    }, []);
+    }, [page]);
 
     return Expanded(child: LayoutContent(content.value));
   }

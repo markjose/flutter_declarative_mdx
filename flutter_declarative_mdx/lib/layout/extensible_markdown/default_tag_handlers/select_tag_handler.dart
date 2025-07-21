@@ -2,18 +2,24 @@ import 'dart:convert';
 
 import 'package:flutter/material.dart';
 import 'package:flutter_declarative_mdx/layout/extensible_markdown/tag_handler.dart';
+import 'package:flutter_declarative_mdx/providers/model_state_provider.dart';
 
 final _selectTag = 'select';
 
 class SelectTagHandler extends TagHandler {
   @override
-  InlineSpan build(Map<String, String> attributes, dynamic model) {
+  InlineSpan build(
+    Map<String, String> attributes,
+    ModelStateProvider? modelProvider,
+  ) {
     final String? label = attributes["label"];
     final String? optionsJson = attributes["options"];
     final String? propertyName = attributes["propertyName"];
 
+    print("SelectTagHandler.build");
+
     onSelectChanged(dynamic value) {
-      print("$propertyName updated to '$value'.");
+      modelProvider?.updateModel(propertyName, value);
     }
 
     final children = <Widget>[];

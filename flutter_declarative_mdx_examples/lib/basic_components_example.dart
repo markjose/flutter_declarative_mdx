@@ -1,14 +1,17 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_declarative_mdx/declarative_mdx.dart';
 import 'package:flutter_declarative_mdx_examples/main_layout.dart';
+import 'package:flutter_hooks/flutter_hooks.dart';
 
-class BasicComponentsExample extends StatelessWidget {
+class BasicComponentsExample extends HookWidget {
   const BasicComponentsExample({super.key});
 
   @override
   Widget build(BuildContext context) {
     return MainLayout(
       child: DeclarativeMdx.fromPageContent('''
+*Toggle the code view by tapping the <> above*
+
 # This is a basic components example
 The flutter_declarative_mdx package supports input as well as formatted MDX documents. The output of these components can be validated locally using some common validations or validated remotely via API calls.
 

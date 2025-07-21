@@ -1,12 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_declarative_mdx/declarative_mdx_configuration.dart';
 import 'package:flutter_declarative_mdx/hooks/use_configure_workflow.dart';
-import 'package:flutter_declarative_mdx/hooks/use_model_state_provider.dart';
 import 'package:flutter_declarative_mdx/layout/layout_workflow.dart';
 import 'package:flutter_declarative_mdx/model/workflow.dart';
 import 'package:flutter_declarative_mdx/model/workflow_page.dart';
 import 'package:flutter_declarative_mdx/model/workflow_step.dart';
-import 'package:flutter_declarative_mdx/providers/model_state_provider.dart';
 import 'package:flutter_declarative_mdx/providers/workflow_provider.dart';
 import 'package:flutter_hooks/flutter_hooks.dart';
 import 'package:provider/provider.dart';
@@ -43,11 +41,6 @@ class DeclarativeMdx extends HookWidget {
         DeclarativeMdxConfiguration(workflow: Workflow(steps: steps)),
       );
 
-  static dynamic useModel(dynamic map) {
-    final provider = useModelStateProvider();
-    return provider == null ? {} : provider.model;
-  }
-
   @override
   Widget build(BuildContext context) {
     final workflow = useConfigureWorkflow(configuration);
@@ -59,7 +52,6 @@ class DeclarativeMdx extends HookWidget {
         ChangeNotifierProvider(create: (_) => WorkflowProvider(workflow)),
       );
     }
-    providers.add(ChangeNotifierProvider(create: (_) => ModelStateProvider()));
 
     return MultiProvider(
       providers: providers,
