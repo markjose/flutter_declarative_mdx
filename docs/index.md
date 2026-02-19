@@ -1,3 +1,8 @@
+---
+layout: default
+title: Home
+---
+
 # flutter_declarative_mdx
 
 **Declarative server-driven UI for Flutter using extensible Markdown**
@@ -32,4 +37,4 @@ Feedback and contributions are welcome.
 
 ## Repository
 
-GitHub: https://github.com/markjose/flutter_declarative_mdx
+GitHub: [https://github.com/markjose/flutter_declarative_mdx](https://github.com/markjose/flutter_declarative_mdx)

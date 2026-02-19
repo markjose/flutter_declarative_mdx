@@ -1,20 +1,14 @@
 {
-    // Use IntelliSense to learn about possible attributes.
-    // Hover to view descriptions of existing attributes.
-    // For more information, visit: https://go.microsoft.com/fwlink/?linkid=830387
-    "version": "0.2.0",
-    "configurations": [
-        {
-            "name": "flutter_declarative_mdx",
-            "cwd": "flutter_declarative_mdx",
-            "request": "launch",
-            "type": "dart"
-        },
-        {
-            "name": "flutter_declarative_mdx_examples",
-            "cwd": "flutter_declarative_mdx_examples",
-            "request": "launch",
-            "type": "dart"
-        },
-    ]
+  // Use IntelliSense to learn about possible attributes.
+  // Hover to view descriptions of existing attributes.
+  // For more information, visit: https://go.microsoft.com/fwlink/?linkid=830387
+  "version": "0.2.0",
+  "configurations": [
+    {
+      "name": "flutter_declarative_mdx_examples",
+      "cwd": "flutter_declarative_mdx_examples",
+      "request": "launch",
+      "type": "dart"
+    }
+  ]
 }

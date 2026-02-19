@@ -1,0 +1,13 @@
+title: flutter_declarative_mdx
+description: Declarative server-driven UI for Flutter using extensible Markdown
+theme: minima
+
+markdown: kramdown
+permalink: pretty
+
+header_pages:
+  - index.md
+  - vision.md
+  - architecture.md
+
+show_downloads: false
