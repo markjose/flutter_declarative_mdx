@@ -8,6 +8,9 @@ A Flutter library for rendering **Extensible Markdown (MDX)** as native UI.
 
 The goal is simple: make it easy to describe common app UI declaratively and deliver it from a server without rebuilding the app.
 
+## Documentation
+https://markjose.github.io/flutter_declarative_mdx/
+
 ## What it does
 
 The library renders MDX documents into Flutter widgets and allows custom components to be registered and composed.
