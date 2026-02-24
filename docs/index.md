@@ -35,4 +35,4 @@ Feedback and contributions are welcome.
 
 ## Repository
 
-GitHub: [https://github.com/markjose/flutter_declarative_mdx](https://github.com/markjose/flutter_declarative_mdx)
+GitHub: [https://cosella-consulting.github.io/flutter_declarative_mdx/](https://cosella-consulting.github.io/flutter_declarative_mdx/)
