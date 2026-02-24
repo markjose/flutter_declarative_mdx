@@ -29,9 +29,7 @@ class DeclarativeMdx extends HookWidget {
     DeclarativeMdxConfiguration(
       page: WorkflowPage(
         markdownLoader:
-            (context) => DefaultAssetBundle.of(
-              context,
-            ).loadString('assets/data/text.md'),
+            (context) => DefaultAssetBundle.of(context).loadString(assetName),
       ),
     ),
   );

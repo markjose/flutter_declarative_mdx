@@ -3,8 +3,6 @@ layout: default
 title: Home
 ---
 
-# flutter_declarative_mdx
-
 **Declarative server-driven UI for Flutter using extensible Markdown**
 
 This project explores a simple approach to defining common application UI — documents, forms, and workflows — using structured markdown delivered from a server and rendered natively in Flutter.

@@ -3,8 +3,6 @@ layout: default
 title: Vision
 ---
 
-# Vision
-
 ## Purpose
 
 `flutter_declarative_mdx` explores a simple idea:

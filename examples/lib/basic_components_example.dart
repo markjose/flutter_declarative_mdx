@@ -46,7 +46,7 @@ An input control that allows for free text to be input and sent to the model. Al
   propertyName="example_2_selection"
 />
 ```
-*Note that inside the options attribute ny strings in the map must use a single quote, unlike true JSON.*
+*Note that inside the options attribute any strings in the map must use a single quote, unlike true JSON.*
 
 #### Model submission
 <submit_model label="Submit Model" url="https://my.api/submissions" />
