@@ -11,17 +11,10 @@ class CustomComponentsExample extends HookWidget {
   @override
   Widget build(BuildContext context) {
     return MainLayout(
-      child: DeclarativeMdx.fromPageContent('''
-# Welcome to Northbank
-
-We just need a few details to get your account ready.
-
-<Callout type="info">
-This page is delivered from the server and rendered natively in Flutter.
-</Callout>
-
----
-''', customizations: Customizations(customComponents: [CalloutTagHandler()])),
+      child: DeclarativeMdx.fromPageAsset(
+        'assets/markdown/custom-components.md',
+        customizations: Customizations(customComponents: [CalloutTagHandler()]),
+      ),
     );
   }
 }

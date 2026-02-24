@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart' show rootBundle;
 import 'package:flutter_declarative_mdx/declarative_mdx_configuration.dart';
 import 'package:flutter_declarative_mdx/hooks/use_configure_workflow.dart';
 import 'package:flutter_declarative_mdx/layout/layout_workflow.dart';
@@ -39,8 +40,7 @@ class DeclarativeMdx extends HookWidget {
   }) => DeclarativeMdx(
     DeclarativeMdxConfiguration(
       page: WorkflowPage(
-        markdownLoader:
-            (context) => DefaultAssetBundle.of(context).loadString(assetName),
+        markdownLoader: () => rootBundle.loadString(assetName),
       ),
     ),
     customizations: customizations,

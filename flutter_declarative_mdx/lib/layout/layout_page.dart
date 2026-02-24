@@ -15,9 +15,7 @@ class LayoutPage extends HookWidget {
       if (page.content != null) {
         content.value = page.content!;
       } else if (page.markdownLoader != null) {
-        page.markdownLoader!(context).then(
-          (markdown) => content.value = markdown,
-        );
+        page.markdownLoader!().then((markdown) => content.value = markdown);
       }
 
       return () {};
