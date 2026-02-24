@@ -9,6 +9,7 @@ final _selectTag = 'select';
 class SelectTagHandler extends TagHandler {
   @override
   InlineSpan build(
+    String content,
     Map<String, String> attributes,
     ModelStateProvider? modelProvider,
   ) {

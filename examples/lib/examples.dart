@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_declarative_mdx_examples/basic_components_example.dart';
+import 'package:flutter_declarative_mdx_examples/custom_components_example.dart';
 import 'package:flutter_declarative_mdx_examples/from_markdown_asset_example.dart';
 import 'package:flutter_declarative_mdx_examples/from_markdown_server_example.dart';
 import 'package:flutter_declarative_mdx_examples/simple_markdown_example.dart';
@@ -39,6 +40,11 @@ class Examples {
       "/from-markdown-server",
       "Load from markdown server",
       (context) => FromMarkdownServerExample(),
+    ),
+    Example(
+      "/custom-components",
+      "Inject custom components",
+      (context) => CustomComponentsExample(),
     ),
   ];
 }

@@ -4,6 +4,9 @@ import 'package:flutter_declarative_mdx_examples/main_layout.dart';
 import 'package:flutter_hooks/flutter_hooks.dart';
 import 'package:http/http.dart' as http;
 
+const exampleUrl =
+    "https://raw.githubusercontent.com/Cosella-Consulting/flutter_declarative_mdx/refs/heads/custom-component-example/examples-data/server_provided_content.md";
+
 class FromMarkdownServerExample extends HookWidget {
   const FromMarkdownServerExample({super.key});
 
@@ -13,9 +16,7 @@ class FromMarkdownServerExample extends HookWidget {
 
     useEffect(() {
       Future<void> fetchMarkdown() async {
-        final response = await http.get(
-          Uri.parse('https://jsonplaceholder.typicode.com/albums/1'),
-        );
+        final response = await http.get(Uri.parse(exampleUrl));
 
         if (response.statusCode == 200) {
           markdown.value = response.body;

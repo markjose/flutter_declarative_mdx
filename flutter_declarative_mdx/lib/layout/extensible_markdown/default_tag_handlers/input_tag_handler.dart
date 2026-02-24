@@ -11,6 +11,7 @@ class InputType {
 class InputTagHandler extends TagHandler {
   @override
   InlineSpan build(
+    String content,
     Map<String, String> attributes,
     ModelStateProvider? modelProvider,
   ) {
