@@ -3,7 +3,7 @@
   "configurations": [
     {
       "name": "flutter_declarative_mdx_examples",
-      "cwd": "examples",
+      "cwd": "example_flutter",
       "request": "launch",
       "type": "dart"
     }

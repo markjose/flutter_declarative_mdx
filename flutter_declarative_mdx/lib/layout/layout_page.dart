@@ -14,8 +14,8 @@ class LayoutPage extends HookWidget {
     useEffect(() {
       if (page.content != null) {
         content.value = page.content!;
-      } else if (page.markdownLoader != null) {
-        page.markdownLoader!().then((markdown) => content.value = markdown);
+      } else if (page.contentLoader != null) {
+        page.contentLoader!().then((markdown) => content.value = markdown);
       }
 
       return () {};

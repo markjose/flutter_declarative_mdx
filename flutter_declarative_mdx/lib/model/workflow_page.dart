@@ -1,7 +1,6 @@
 class WorkflowPage {
   final String? content;
-  final Uri? contentUri;
-  final Future<String> Function()? markdownLoader;
+  final Future<String> Function()? contentLoader;
 
-  WorkflowPage({this.content, this.contentUri, this.markdownLoader});
+  WorkflowPage({this.content, this.contentLoader});
 }

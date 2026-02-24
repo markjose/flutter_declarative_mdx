@@ -18,32 +18,32 @@ class Examples {
   static List<Example> get all => [
     Example(
       "/simple-markdown",
-      "Simple single page from markdown",
+      "A simple MDX page",
       (context) => SimpleMarkdownExample(),
     ),
     Example(
-      "/basic-components",
-      "Basic components example",
-      (context) => BasicComponentsExample(),
-    ),
-    Example(
       "/simple-workflow",
-      "Simple paged workflow example",
+      "A simple MDX workflow",
       (context) => SimpleWorkflowExample(),
     ),
     Example(
       "/from-markdown-asset",
-      "Load from asset example",
+      "MDX loaded from Assets",
       (context) => FromMarkdownAssetExample(),
     ),
     Example(
       "/from-markdown-server",
-      "Load from markdown server",
+      "MDX loaded over HTTP",
       (context) => FromMarkdownServerExample(),
     ),
     Example(
+      "/basic-components",
+      "Built in components",
+      (context) => BasicComponentsExample(),
+    ),
+    Example(
       "/custom-components",
-      "Inject custom components",
+      "Custom components",
       (context) => CustomComponentsExample(),
     ),
   ];

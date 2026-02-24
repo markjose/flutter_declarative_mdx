@@ -39,9 +39,7 @@ class DeclarativeMdx extends HookWidget {
     Customizations? customizations,
   }) => DeclarativeMdx(
     DeclarativeMdxConfiguration(
-      page: WorkflowPage(
-        markdownLoader: () => rootBundle.loadString(assetName),
-      ),
+      page: WorkflowPage(contentLoader: () => rootBundle.loadString(assetName)),
     ),
     customizations: customizations,
   );
