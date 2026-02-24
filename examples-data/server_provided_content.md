@@ -1,0 +1,1 @@
+# Server provided content example
