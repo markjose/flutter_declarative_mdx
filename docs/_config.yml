@@ -10,4 +10,7 @@ header_pages:
   - vision.md
   - architecture.md
 
-show_downloads: false
+show_downloads: true
+
+github_username: markjose
+repository: flutter_declarative_mdx
