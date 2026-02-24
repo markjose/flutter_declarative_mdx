@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_declarative_mdx/hooks/use_customization_provider.dart';
 import 'package:flutter_declarative_mdx/hooks/use_model_state_provider.dart';
 import 'package:flutter_declarative_mdx/layout/extensible_markdown/default_tag_handlers/select_tag_handler.dart';
 import 'package:flutter_declarative_mdx/layout/extensible_markdown/tag_handler.dart';
@@ -16,6 +17,7 @@ class LayoutContent extends HookWidget {
 
   @override
   Widget build(BuildContext context) {
+    final customization = useCustomizationProvider();
     final modelProvider = useModelStateProvider();
 
     final baseTextStyle = GoogleFonts.roboto().copyWith(fontSize: 14.0);
@@ -42,6 +44,7 @@ class LayoutContent extends HookWidget {
       InputTagHandler(),
       SelectTagHandler(),
       SubmitModelTagHandler(),
+      ...(customization?.componentHandlers ?? []),
     ];
 
     return Column(

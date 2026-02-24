@@ -10,8 +10,6 @@ This page is delivered from the server and rendered natively in Flutter.
 
 ## Your details
 
-<Form id="customer_details">
-
 <TextField
   name="firstName"
   label="First name"

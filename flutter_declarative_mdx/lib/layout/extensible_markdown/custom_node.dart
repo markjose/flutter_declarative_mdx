@@ -10,6 +10,7 @@ class CustomNode extends ElementNode {
   final ModelStateProvider? modelProvider;
 
   String? customTag;
+  String? customContent;
   Map<String, String>? customAttributes;
 
   CustomNode({
@@ -40,6 +41,22 @@ class CustomNode extends ElementNode {
     return attributes;
   }
 
+  String contentFromText(String tag, String parseTarget) {
+    final RegExp attrRegExp = RegExp(
+      '\\s*<([\\w\\W\\s]+)>\\s*([\\w\\W\\s]+)\\s*<\\/([\\w\\W\\s]+)>\\s*',
+      caseSensitive: false,
+    );
+
+    for (final match in attrRegExp.allMatches(parseTarget)) {
+      final attrContent = match.group(2);
+      if (attrContent != null) {
+        return attrContent;
+      }
+    }
+
+    return "";
+  }
+
   @override
   InlineSpan build() {
     if (customTag == null) {
@@ -48,7 +65,7 @@ class CustomNode extends ElementNode {
 
     return (tagHandlers ?? [])
         .firstWhere((handler) => handler.tag == customTag)
-        .build(customAttributes!, modelProvider);
+        .build(customContent ?? "", customAttributes!, modelProvider);
   }
 
   @override
@@ -59,6 +76,7 @@ class CustomNode extends ElementNode {
     for (var handler in (tagHandlers ?? [])) {
       if (text.contains(RegExp('<${handler.tag}[^>]*>'))) {
         customTag = handler.tag;
+        customContent = contentFromText(handler.tag, text);
         customAttributes = attributesFromText(handler.tag, text);
         accept(ConcreteElementNode(tag: handler.tag));
         return;

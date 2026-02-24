@@ -9,7 +9,11 @@ class SubmitModelType {
 
 class SubmitModelTagHandler extends TagHandler {
   @override
-  InlineSpan build(Map<String, String> attributes, dynamic model) {
+  InlineSpan build(
+    String content,
+    Map<String, String> attributes,
+    dynamic model,
+  ) {
     final String label = attributes["label"] ?? "Submit model";
 
     onSubmitModelPressed() {
