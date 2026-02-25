@@ -52,6 +52,14 @@ class DeclarativeMdx extends HookWidget {
     customizations: customizations,
   );
 
+  factory DeclarativeMdx.fromWorkflow(
+    Workflow workflow, {
+    Customizations? customizations,
+  }) => DeclarativeMdx(
+    DeclarativeMdxConfiguration(workflow: workflow),
+    customizations: customizations,
+  );
+
   @override
   Widget build(BuildContext context) {
     final workflow = useConfigureWorkflow(configuration);
