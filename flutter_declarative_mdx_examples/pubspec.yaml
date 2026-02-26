@@ -1,7 +1,7 @@
 name: flutter_declarative_mdx_examples
-description: "A new Flutter project."
+description: "A collection of examples for use with flutter_declarative_mdx."
 publish_to: 'none'
-version: 0.1.0
+version: 0.0.1
 
 environment:
   sdk: ^3.7.0
@@ -11,6 +11,8 @@ dependencies:
     sdk: flutter
   flutter_declarative_mdx:
     path: ../flutter_declarative_mdx
+  flutter_declarative_mdx_extensions:
+    path: ../flutter_declarative_mdx_extensions
   flutter_hooks: ^0.21.2
   http: ^1.6.0
   go_router: ^16.0.0

@@ -85,6 +85,13 @@ packages:
       relative: true
     source: path
     version: "0.0.1"
+  flutter_declarative_mdx_extensions:
+    dependency: "direct main"
+    description:
+      path: "../flutter_declarative_mdx_extensions"
+      relative: true
+    source: path
+    version: "0.0.1"
   flutter_highlight:
     dependency: transitive
     description:

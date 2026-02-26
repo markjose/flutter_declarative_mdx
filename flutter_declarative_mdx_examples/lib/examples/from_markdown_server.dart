@@ -5,7 +5,7 @@ import 'package:flutter_hooks/flutter_hooks.dart';
 import 'package:http/http.dart' as http;
 
 const exampleUrl =
-    "https://raw.githubusercontent.com/Cosella-Consulting/flutter_declarative_mdx/refs/heads/main/example_mdx/simple_content.md";
+    "https://raw.githubusercontent.com/Cosella-Consulting/flutter_declarative_mdx/refs/heads/main/flutter_declarative_mdx_examples/assets/markdown/server_content.md";
 
 class FromMarkdownServerExample extends HookWidget {
   const FromMarkdownServerExample({super.key});
