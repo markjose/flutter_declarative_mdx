@@ -6,6 +6,9 @@ import 'package:flutter_declarative_mdx/model/workflow_page.dart';
 import 'package:flutter_declarative_mdx/model/workflow_step.dart';
 import 'package:flutter_declarative_mdx_examples/examples/onboarding/custom_step_progress.dart';
 import 'package:flutter_declarative_mdx_examples/main_layout.dart';
+import 'package:flutter_declarative_mdx_extensions/financial/account_number_tag_handler.dart';
+import 'package:flutter_declarative_mdx_extensions/financial/sort_code_tag_handler..dart';
+import 'package:flutter_declarative_mdx_extensions/personal/ni_number_tag_handler..dart';
 
 class OnboardingWorkflowExample extends StatelessWidget {
   const OnboardingWorkflowExample({super.key});
@@ -41,6 +44,7 @@ We need your National Insurance (NI) number in order to proceed.
 Which bank account will you use to fund this account?
 
 <AccountNumber></AccountNumber>
+
 <SortCode></SortCode>
 ''',
             ),
@@ -58,7 +62,11 @@ Which bank account will you use to fund this account?
     );
 
     final customizations = Customizations(
-      customComponents: [],
+      customComponents: [
+        AccountNumberTagHandler(),
+        NiNumberTagHandler(),
+        SortCodeTagHandler(),
+      ],
       headerBuilder: (workflowStatus) => CustomStepProgress(workflowStatus),
     );
 
