@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_declarative_mdx/hooks/use_actions.dart';
 import 'package:flutter_declarative_mdx/hooks/use_customization_provider.dart';
+import 'package:flutter_declarative_mdx/hooks/use_page_status.dart';
 import 'package:flutter_declarative_mdx/hooks/use_steps.dart';
 import 'package:flutter_declarative_mdx/layout/layout_actions.dart';
 import 'package:flutter_declarative_mdx/layout/layout_header.dart';
@@ -20,6 +21,7 @@ class LayoutWorkflow extends HookWidget {
     final customizations = useCustomizationProvider();
     final actions = useActions();
     final steps = useSteps();
+    final pageStatus = usePageStatus();
 
     WorkflowStepInfo mapWorkflowStepToWorkflowStepInfo(
       MapEntry<int, WorkflowStep> entry,
@@ -33,7 +35,7 @@ class LayoutWorkflow extends HookWidget {
     final status = WorkflowStatus(
       steps:
           steps.asMap().entries.map(mapWorkflowStepToWorkflowStepInfo).toList(),
-      currentStep: 0,
+      pageStatus: pageStatus,
       actions: actions,
     );
 

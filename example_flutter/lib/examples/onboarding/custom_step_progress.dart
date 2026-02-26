@@ -8,11 +8,23 @@ class CustomStepProgress extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    mapEntryToProgressLabel(entry) => Text(
+      entry.value.label ?? "N/A",
+      style: TextStyle(
+        fontWeight:
+            workflowStatus.pageStatus.currentStep == entry.key
+                ? FontWeight.bold
+                : FontWeight.normal,
+      ),
+    );
+
     return Row(
       mainAxisAlignment: MainAxisAlignment.spaceBetween,
       children:
           workflowStatus.steps
-              .map((step) => Text(step.label ?? "N/A"))
+              .asMap()
+              .entries
+              .map(mapEntryToProgressLabel)
               .toList(),
     );
   }
