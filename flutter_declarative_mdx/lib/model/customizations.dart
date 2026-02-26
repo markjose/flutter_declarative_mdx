@@ -1,7 +1,11 @@
+import 'package:flutter/widgets.dart';
 import 'package:flutter_declarative_mdx/layout/extensible_markdown/tag_handler.dart';
+import 'package:flutter_declarative_mdx/model/workflow_status.dart';
 
 class Customizations {
   List<TagHandler> customComponents = [];
+  Widget Function(WorkflowStatus status)? headerBuilder;
+  Widget Function(WorkflowStatus status)? footerBuilder;
 
-  Customizations({required this.customComponents});
+  Customizations({required this.customComponents, this.headerBuilder});
 }

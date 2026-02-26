@@ -41,9 +41,9 @@ class LayoutHeader extends HookWidget {
         buildDivider == null ? buildDefaultDivider() : buildDivider!();
 
     final children = <Widget>[];
-    steps.asMap().entries.forEach((MapEntry<int, WorkflowStep> entry) {
+    for (var entry in steps.asMap().entries) {
       children.addAll(mapStepLabel(entry.key, entry.value, divider));
-    });
+    }
 
     return Row(mainAxisAlignment: MainAxisAlignment.center, children: children);
   }

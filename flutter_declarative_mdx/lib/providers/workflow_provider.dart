@@ -2,6 +2,7 @@ import 'package:flutter/foundation.dart';
 import 'package:flutter_declarative_mdx/model/workflow.dart';
 import 'package:flutter_declarative_mdx/model/workflow_action.dart';
 import 'package:flutter_declarative_mdx/model/workflow_page.dart';
+import 'package:flutter_declarative_mdx/model/workflow_page_status.dart';
 import 'package:flutter_declarative_mdx/model/workflow_step.dart';
 
 class WorkflowProvider with ChangeNotifier {
@@ -14,6 +15,11 @@ class WorkflowProvider with ChangeNotifier {
 
   WorkflowStep get currentStep => evaluateCurrentSteps()[_currentStepIndex];
   WorkflowPage get currentPage => evaluateCurrentPages()[_currentPageIndex];
+  WorkflowPageStatus get currentPageStatus => WorkflowPageStatus(
+    currentStep: _currentStepIndex,
+    currentPage: _currentPageIndex,
+  );
+
   List<WorkflowAction> get currentActions {
     final actions = <WorkflowAction>[];
     final steps = evaluateCurrentSteps();

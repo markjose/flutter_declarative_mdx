@@ -17,8 +17,6 @@ class SelectTagHandler extends TagHandler {
     final String? optionsJson = attributes["options"];
     final String? propertyName = attributes["propertyName"];
 
-    print("SelectTagHandler.build");
-
     onSelectChanged(dynamic value) {
       modelProvider?.updateModel(propertyName, value);
     }
