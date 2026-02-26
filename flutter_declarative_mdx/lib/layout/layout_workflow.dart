@@ -1,8 +1,13 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_declarative_mdx/hooks/use_workflow_provider.dart';
+import 'package:flutter_declarative_mdx/hooks/use_actions.dart';
+import 'package:flutter_declarative_mdx/hooks/use_customization_provider.dart';
+import 'package:flutter_declarative_mdx/hooks/use_steps.dart';
 import 'package:flutter_declarative_mdx/layout/layout_actions.dart';
 import 'package:flutter_declarative_mdx/layout/layout_header.dart';
 import 'package:flutter_declarative_mdx/layout/layout_page.dart';
+import 'package:flutter_declarative_mdx/model/workflow_status.dart';
+import 'package:flutter_declarative_mdx/model/workflow_step.dart';
+import 'package:flutter_declarative_mdx/model/workflow_step_info.dart';
 import 'package:flutter_hooks/flutter_hooks.dart';
 
 class LayoutWorkflow extends HookWidget {
@@ -12,16 +17,44 @@ class LayoutWorkflow extends HookWidget {
 
   @override
   Widget build(BuildContext context) {
-    final workflowProvider = useWorkflowProvider();
+    final customizations = useCustomizationProvider();
+    final actions = useActions();
+    final steps = useSteps();
+
+    WorkflowStepInfo mapWorkflowStepToWorkflowStepInfo(
+      MapEntry<int, WorkflowStep> entry,
+    ) => WorkflowStepInfo(
+      entry.key,
+      entry.value.label,
+      entry.value.pages.length,
+      false,
+    );
+
+    final status = WorkflowStatus(
+      steps:
+          steps.asMap().entries.map(mapWorkflowStepToWorkflowStepInfo).toList(),
+      currentStep: 0,
+      actions: actions,
+    );
 
     final children = <Widget>[];
 
-    if (workflowProvider.steps.length > 1) {
-      children.add(LayoutHeader());
+    if (steps.length > 1) {
+      final header =
+          customizations?.headerBuilder != null
+              ? customizations!.headerBuilder!(status)
+              : LayoutHeader();
+      children.add(header);
     }
+
     children.add(LayoutPage());
-    if (workflowProvider.steps.length > 1) {
-      children.add(LayoutActions());
+
+    if (steps.length > 1) {
+      final footer =
+          customizations?.footerBuilder != null
+              ? customizations!.footerBuilder!(status)
+              : LayoutActions();
+      children.add(footer);
     }
 
     return isHorizontal

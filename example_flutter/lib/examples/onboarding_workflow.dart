@@ -16,7 +16,12 @@ class OnboardingWorkflowExample extends StatelessWidget {
       steps: [
         WorkflowStep(
           label: "Your Details",
-          pages: [WorkflowPage(content: 'Step 1')],
+          pages: [
+            WorkflowPage(content: 'Basic screens'),
+            WorkflowPage(content: 'National Insurance Number'),
+            WorkflowPage(content: 'Nationality details'),
+            WorkflowPage(content: 'Address'),
+          ],
         ),
         WorkflowStep(
           label: "Bank Details",
@@ -35,9 +40,7 @@ class OnboardingWorkflowExample extends StatelessWidget {
 
     final customizations = Customizations(
       customComponents: [],
-      progressBuilder:
-          (steps, currentStep) =>
-              CustomStepProgress(steps, currentStep: currentStep),
+      headerBuilder: (workflowStatus) => CustomStepProgress(workflowStatus),
     );
 
     return MainLayout(

@@ -1,8 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_declarative_mdx/hooks/use_customization_provider.dart';
 import 'package:flutter_declarative_mdx/hooks/use_steps.dart';
 import 'package:flutter_declarative_mdx/model/workflow_step.dart';
-import 'package:flutter_declarative_mdx/model/workflow_step_info.dart';
 import 'package:flutter_hooks/flutter_hooks.dart';
 
 class LayoutHeader extends HookWidget {
@@ -38,36 +36,15 @@ class LayoutHeader extends HookWidget {
   @override
   Widget build(BuildContext context) {
     final steps = useSteps();
-    final customization = useCustomizationProvider();
 
     final divider =
         buildDivider == null ? buildDefaultDivider() : buildDivider!();
-    final stepEntries = steps.asMap().entries;
 
-    if (customization?.progressBuilder != null) {
-      return customization!.progressBuilder!(
-        stepEntries
-            .map(
-              (MapEntry<int, WorkflowStep> entry) => WorkflowStepInfo(
-                entry.key,
-                entry.value.label,
-                entry.value.pages.length,
-                false,
-              ),
-            )
-            .toList(),
-        0,
-      );
-    } else {
-      final children = <Widget>[];
-      for (var entry in stepEntries) {
-        children.addAll(mapStepLabel(entry.key, entry.value, divider));
-      }
-
-      return Row(
-        mainAxisAlignment: MainAxisAlignment.center,
-        children: children,
-      );
+    final children = <Widget>[];
+    for (var entry in steps.asMap().entries) {
+      children.addAll(mapStepLabel(entry.key, entry.value, divider));
     }
+
+    return Row(mainAxisAlignment: MainAxisAlignment.center, children: children);
   }
 }

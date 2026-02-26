@@ -1,17 +1,19 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_declarative_mdx/model/workflow_step_info.dart';
+import 'package:flutter_declarative_mdx/model/workflow_status.dart';
 
 class CustomStepProgress extends StatelessWidget {
-  final int currentStep;
-  final List<WorkflowStepInfo> steps;
+  final WorkflowStatus workflowStatus;
 
-  const CustomStepProgress(this.steps, {super.key, this.currentStep = 0});
+  const CustomStepProgress(this.workflowStatus, {super.key});
 
   @override
   Widget build(BuildContext context) {
     return Row(
       mainAxisAlignment: MainAxisAlignment.spaceBetween,
-      children: steps.map((step) => Text(step.label ?? "N/A")).toList(),
+      children:
+          workflowStatus.steps
+              .map((step) => Text(step.label ?? "N/A"))
+              .toList(),
     );
   }
 }
