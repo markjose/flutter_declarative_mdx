@@ -18,14 +18,33 @@ class OnboardingWorkflowExample extends StatelessWidget {
           label: "Your Details",
           pages: [
             WorkflowPage(content: 'Basic screens'),
-            WorkflowPage(content: 'National Insurance Number'),
+            WorkflowPage(
+              content: '''
+# National Insurance Number
+
+We need your National Insurance (NI) number in order to proceed.
+
+<NiNumber></NiNumber>
+''',
+            ),
             WorkflowPage(content: 'Nationality details'),
             WorkflowPage(content: 'Address'),
           ],
         ),
         WorkflowStep(
           label: "Bank Details",
-          pages: [WorkflowPage(content: 'Step 2')],
+          pages: [
+            WorkflowPage(
+              content: '''
+# Bank Details
+
+Which bank account will you use to fund this account?
+
+<AccountNumber></AccountNumber>
+<SortCode></SortCode>
+''',
+            ),
+          ],
         ),
         WorkflowStep(
           label: "Security",
