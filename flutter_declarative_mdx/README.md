@@ -1,4 +1,6 @@
-# flutter_declarative_mdx
+# flutter_declarative_mdx (pre-release)
+
+> **Version 1.0.0 is imminent**, until version 1.0.0 is available we recommend you don't use this package in any production systems.
 
 ![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)
 
